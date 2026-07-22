@@ -67,6 +67,13 @@ function PublicSite() {
     return () => window.removeEventListener('keydown', closeOnEscape)
   }, [qrOpen])
 
+  useEffect(() => {
+    if (!menuOpen && !qrOpen && !tool) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.body.style.overflow = previousOverflow }
+  }, [menuOpen, qrOpen, tool])
+
   return (
     <div className="site-shell">
       <motion.div className="scroll-progress" style={{ scaleX }} />

@@ -116,8 +116,13 @@ app.post('/api/leads', async (req, res) => {
   const calculation = rawCalculation && typeof rawCalculation === 'object' ? {
     budget: Math.max(0, Number(rawCalculation.budget) || 0), years: Math.max(0, Number(rawCalculation.years) || 0), rate: Math.max(0, Number(rawCalculation.rate) || 0), total: Math.max(0, Number(rawCalculation.total) || 0), profit: Math.max(0, Number(rawCalculation.profit) || 0),
   } : null
-  const lead = { id: crypto.randomUUID(), at: new Date().toISOString(), name: cleanText(req.body.name, 80), contact: cleanText(req.body.contact, 120), goal: cleanText(req.body.goal), budget: cleanText(req.body.budget), region: cleanText(req.body.region), calculation }
-  if (!lead.name || !lead.contact) return res.status(400).json({ error: 'name_and_contact_required' })
+  const lead = {
+    id: crypto.randomUUID(), at: new Date().toISOString(), name: cleanText(req.body.name, 80), contact: cleanText(req.body.contact, 120),
+    goal: cleanText(req.body.goal), budget: cleanText(req.body.budget), region: cleanText(req.body.region),
+    investmentExperience: cleanText(req.body.investmentExperience, 300), savings: cleanText(req.body.savings, 200),
+    creditLeverage: cleanText(req.body.creditLeverage, 200), readiness: cleanText(req.body.readiness, 300), calculation,
+  }
+  if (!lead.name || !lead.contact || !lead.goal || !lead.budget || !lead.region || !lead.investmentExperience || !lead.savings || !lead.creditLeverage || !lead.readiness) return res.status(400).json({ error: 'missing_fields' })
   await updateStore((store) => { store.leads.push(lead); store.leads = store.leads.slice(-1000) }); res.status(201).json({ ok: true, id: lead.id })
 })
 app.post('/api/bookings', async (req, res) => {
