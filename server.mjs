@@ -15,7 +15,7 @@ const encryptionKey = crypto.createHash('sha256').update(encryptionSecret).diges
 const sessions = new Map()
 
 const defaultContent = {
-  headlineTop: 'Покупайте', headlineAccent: 'ценность,', headlineBottom: 'не метры.',
+  headlineTop: 'Доходность измеряется', headlineAccent: 'не километрами от подъезда,', headlineBottom: 'а потенциалом роста!',
   heroText: 'Я нахожу недвижимость, которая сохраняет капитал, приносит доход и остаётся вашим сильным решением спустя годы.',
   stats: ['7+', '150+', '2 млрд+'], telegramPosts: ['805', '804', '802'],
 }
@@ -27,7 +27,13 @@ async function readStore() {
     const decipher = crypto.createDecipheriv('aes-256-gcm', encryptionKey, Buffer.from(envelope.iv, 'base64'))
     decipher.setAuthTag(Buffer.from(envelope.tag, 'base64'))
     const plaintext = Buffer.concat([decipher.update(Buffer.from(envelope.data, 'base64')), decipher.final()]).toString('utf8')
-    return { ...emptyStore(), ...JSON.parse(plaintext) }
+    const store = { ...emptyStore(), ...JSON.parse(plaintext) }
+    if (store.content?.headlineTop === 'Покупайте' && store.content?.headlineAccent === 'ценность,') {
+      store.content.headlineTop = defaultContent.headlineTop
+      store.content.headlineAccent = defaultContent.headlineAccent
+      store.content.headlineBottom = defaultContent.headlineBottom
+    }
+    return store
   } catch (error) {
     if (error?.code !== 'ENOENT') console.error('Encrypted store could not be read:', error.message)
     return emptyStore()
