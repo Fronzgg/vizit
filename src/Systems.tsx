@@ -15,9 +15,9 @@ export type SiteContent = {
 }
 
 export const defaultSiteContent: SiteContent = {
-  headlineTop: 'Доходность измеряется',
-  headlineAccent: 'не километрами от подъезда,',
-  headlineBottom: 'а потенциалом роста!',
+  headlineTop: 'Покупайте',
+  headlineAccent: 'ценность,',
+  headlineBottom: 'не метры.',
   heroText: 'Я нахожу недвижимость, которая сохраняет капитал, приносит доход и остаётся вашим сильным решением спустя годы.',
   stats: ['7+', '150+', '2 млрд+'],
   telegramPosts: ['805', '804', '802'],

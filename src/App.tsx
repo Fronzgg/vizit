@@ -95,7 +95,7 @@ function PublicSite() {
           <div className="hero-copy">
             <motion.p className="eyebrow" initial={{ opacity: 0 }} animate={{ opacity: loaded ? 1 : 0 }} transition={{ delay: .2 }}>Инвестиции в недвижимость · Санкт-Петербург</motion.p>
             <motion.div className="hero-title-wrap" style={{ x: titleX }}>
-              <motion.h1 className={(siteContent.headlineTop + siteContent.headlineAccent + siteContent.headlineBottom).length > 45 ? 'long-headline' : ''} initial={{ y: 100, opacity: 0 }} animate={{ y: loaded ? 0 : 100, opacity: loaded ? 1 : 0 }} transition={{ delay: .4, duration: 1, ease: [0.22, 1, 0.36, 1] }}>
+              <motion.h1 initial={{ y: 100, opacity: 0 }} animate={{ y: loaded ? 0 : 100, opacity: loaded ? 1 : 0 }} transition={{ delay: .4, duration: 1, ease: [0.22, 1, 0.36, 1] }}>
                 {siteContent.headlineTop}<br /><em>{siteContent.headlineAccent}</em><br />{siteContent.headlineBottom}
               </motion.h1>
             </motion.div>
