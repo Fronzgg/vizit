@@ -173,7 +173,7 @@ function PublicSite() {
             <div className="contact-row has-qr"><motion.a className="contact-main" href="https://t.me/rieltorolgak" target="_blank" rel="noreferrer" whileHover={{ x: 8 }}><span className="contact-icon image-icon"><img src="/telegram-icon.png" alt="" /></span><span><small>Telegram-канал</small><strong>@rieltorolgak</strong></span><ArrowUpRight /></motion.a><button className="qr-trigger" onClick={() => setQrOpen('telegram')}><QrCode /><span>QR</span></button></div>
             <div className="contact-row has-qr"><motion.a className="contact-main" href="https://max.ru/u/f9LHodD0cOLsrSdJRlQ1l-d9Jf7h0K0-VJ8OxYZgr1TG5n_sbkqvmnNCwwg" target="_blank" rel="noreferrer" whileHover={{ x: 8 }}><span className="contact-icon image-icon"><img src="/max-icon.png" alt="" /></span><span><small>Канал MAX</small><strong>Канал Ольги Корзун</strong></span><ArrowUpRight /></motion.a><button className="qr-trigger" onClick={() => setQrOpen('max')}><QrCode /><span>QR</span></button></div>
           </div>
-          <div className="contact-note">Ольга Корзун · инвестиции в недвижимость</div>
+          <div className="contact-bottom"><div className="contact-note">Ольга Корзун · инвестиции в недвижимость</div><div className="contact-credit">Сайт сделан by <a href="https://t.me/fronzgg" target="_blank" rel="noreferrer">@fronzgg</a></div></div>
         </section>
       </main>
 
