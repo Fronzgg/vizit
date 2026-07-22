@@ -131,7 +131,6 @@ function PublicSite() {
           <div className="number-grid">
             {[[siteContent.stats[0], 'лет в недвижимости'], [siteContent.stats[1], 'проведённых сделок'], [siteContent.stats[2], 'совокупный объём объектов']].map(([value,label]) => <motion.div key={label} variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }}><strong>{value}</strong><span>{label}</span></motion.div>)}
           </div>
-          <small>Цифры указаны как заглушки и легко заменяются на актуальные.</small>
         </section>
 
         <section className="projects-section" id="projects">
